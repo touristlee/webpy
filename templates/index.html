@@ -1,0 +1,120 @@
+$def with(tmp)
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 800px;height:600px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+		var option = {
+			    title : {
+			        text: '消费者欲望',
+			        subtext: '购物车',
+			        x:'center'
+			    },
+			    tooltip : {
+			        trigger: 'item'
+			    },
+			    legend: {
+			        orient: 'vertical',
+			        x:'left',
+			        data:['count']
+			    },
+			    dataRange: {
+			        min: 0,
+			        max: 500,
+			        x: 'left',
+			        y: 'bottom',
+			        text:['高','低'],           // 文本，默认为数值文本
+			        calculable : true,
+			        orient : 'horizontal',
+			        color:['#1e90ff','#f0ffff']
+			    },
+			    toolbox: {
+			        show: true,
+			        orient : 'vertical',
+			        x: 'right',
+			        y: 'center',
+			        feature : {
+			            mark : {show: true},
+			            dataView : {show: true, readOnly: false},
+			            restore : {show: true},
+			            saveAsImage : {show: true}
+			        }
+			    },
+			    roamController: {
+			        show: true,
+			        x: 'right',
+			        mapTypeControl: {
+			            'china': true
+			        }
+			    },
+			    series : [
+			        {
+			            name: 'count',
+			            type: 'map',
+			            mapType: 'china',
+			            roam: false,
+                        itemStyle:{
+                            normal:{label:{show:true}},
+                            emphasis:{label:{show:true}}
+                        },
+			            data:[
+			                {name: '北京',value: $tmp[u'北京']},
+			                {name: '天津',value: $tmp[u'天津']},
+			                {name: '上海',value: $tmp[u'上海']},
+			                {name: '重庆',value: $tmp[u'重庆']},
+			                {name: '河北',value: $tmp[u'河北']},
+			                {name: '河南',value: $tmp[u'河南']},
+			                {name: '云南',value: $tmp[u'云南']},
+			                {name: '辽宁',value: $tmp[u'辽宁']},
+			                {name: '黑龙江',value: $tmp[u'黑龙江']},
+			                {name: '湖南',value: $tmp[u'湖南']},
+			                {name: '安徽',value: $tmp[u'安徽']},
+			                {name: '山东',value: $tmp[u'山东']},
+			                {name: '新疆',value: $tmp[u'新疆']},
+			                {name: '江苏',value: $tmp[u'江苏']},
+			                {name: '浙江',value: $tmp[u'浙江']},
+			                {name: '江西',value: $tmp[u'江西']},
+			                {name: '湖北',value: $tmp[u'湖北']},
+			                {name: '广西',value: $tmp[u'广西']},
+			                {name: '甘肃',value: $tmp[u'甘肃']},
+			                {name: '山西',value: $tmp[u'山西']},
+			                {name: '内蒙古',value: $tmp[u'内蒙古']},
+			                {name: '陕西',value: $tmp[u'陕西']},
+			                {name: '吉林',value: $tmp[u'吉林']},
+			                {name: '福建',value: $tmp[u'福建']},
+			                {name: '贵州',value: $tmp[u'贵州']},
+			                {name: '广东',value: $tmp[u'广东']},
+			                {name: '青海',value: $tmp[u'青海']},
+			                {name: '西藏',value: $tmp[u'西藏']},
+			                {name: '四川',value: $tmp[u'四川']},
+			                {name: '宁夏',value: $tmp[u'宁夏']},
+			                {name: '海南',value: $tmp[u'海南']},
+			                {name: '台湾',value: $tmp[u'台湾']},
+			                {name: '香港',value: $tmp[u'香港']},
+			                {name: '澳门',value: $tmp[u'澳门']}
+			            ]
+			        },
+
+			    ]
+			};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
